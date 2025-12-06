@@ -1,12 +1,21 @@
-# Maintenance v1 (2025-11-11)
+# Maintenance 2025-12-06
 
-* POUZE PRODUKCE - udelat snapshot pres DigitalOcean web
+## Prihlaseni na jumphost
 * prihlasit se pres vzdalenou plochu na 33333
 * zapnout VPN
+* odkazy na dulezite weby jsou ve firefoxu
+
+## Pro kazdy server ze seznamu:
+
+* udelat snapshot pres DigitalOcean web
 * spustit terminal
 * prihlasit se pomoci SSH na vybrany server
 ```shell
 ssh <nazev-serveru-z-excelu>
+```
+* prihlaseni jako root
+```shell
+sudo bash
 ```
 * overit ze jde o Alpine Linux
 ```shell
@@ -19,36 +28,34 @@ musi vratit verzi, napr. `3.20.3`
 ```shell
 df -h /
 ```
-Use% musi byt 80% nebo mene. **Pokud je vice nez 80 tak nepokracovat**
+Use% musi byt 80% nebo mene.
+**Pokud je vice nez 80% tak nepokracovat**
 
 * aktualizace repozitaru 
 ```shell
-sudo mcedit /etc/apk/repositories
+mcedit /etc/apk/repositories
 ```
 Zmenit `v3.xx` na `v3.22` a ulozit
 	
 * aktualizace balicku a systemu
 ```shell
-sudo apk update
-sudo apk upgrade
+apk update
+apk upgrade
 ```
 
-* restartovat server po aktualizaci
-```shell
-sudo reboot
-```
-zkontrolovat ze web bezi - nejpozdeji do 5 minut musi bezet
-
-* prihlasit se zpet pres SSH
 * overit ze docker bezi jak ma
 ```shell
 docker ps -q | wc -l
 ```
-**pokud vrati nulu tak nepokracovat**
+**pokud vrati nulu pak preskocit dalsi krok**
 
 * procisteni dockeru
-	* **nedelat u serveru ze skupiny OPS a INFRA**
 ```shell
 docker system prune -af --volumes
 ```
-* overit ze web bezi jak ma
+
+* restartovat server po aktualizaci
+```shell
+reboot
+```
+zkontrolovat ze web bezi - nejpozdeji do 5 minut musi bezet jinak nahlasit
