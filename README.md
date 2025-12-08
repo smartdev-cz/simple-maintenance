@@ -1,4 +1,4 @@
-# Maintenance 2025-12-06
+# Maintenance 2025-12-08
 
 ## Prihlaseni na jumphost
 * prihlasit se pres vzdalenou plochu na 33333
@@ -19,10 +19,9 @@ sudo bash
 ```
 * overit ze jde o Alpine Linux
 ```shell
-cat /etc/alpine-release
+uname -a | grep -o Alpine
 ```
-musi vratit verzi, napr. `3.20.3`
-**Pokud predchozi prikaz nevrati cislo pak nepokracovat**
+**Pokud predchozi prikaz nevrati slovo "Alpine" pak nepokracovat**
 
 * overeni volneho mista
 ```shell
@@ -35,12 +34,11 @@ Use% musi byt 80% nebo mene.
 ```shell
 mcedit /etc/apk/repositories
 ```
-Zmenit `v3.xx` na `v3.22` a ulozit
+Zmenit `v3.xx` na `v3.22` a ulozit (escape + yes)
 	
-* aktualizace balicku a systemu
+* aktualizace systemu
 ```shell
-apk update
-apk upgrade
+apk update && apk upgrade
 ```
 
 * overit ze docker bezi jak ma
