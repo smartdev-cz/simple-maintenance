@@ -1,9 +1,7 @@
-# Maintenance 2025-12-08
+# Maintenance 2025-01-12
 
 ## Prihlaseni na jumphost
 * prihlasit se pres vzdalenou plochu na 33333
-* zapnout VPN
-* odkazy na dulezite weby jsou ve firefoxu
 
 ## Pro kazdy server ze seznamu:
 
